@@ -2,7 +2,7 @@ A pipeline for assembling and annotating phage genomes. This pipeline is hard-co
 
 ```{bash}
 # create an alias
-echo "alias PhagePipeline='sh /home/acv38/project/shared_scripts/PhagePipeline/run_PhagePipeline.sh'" >> ~/.bashrc
+echo "alias PhagePipeline='sh ~/project/shared_scripts/PhagePipeline/run_PhagePipeline.sh'" >> ~/.bashrc
 
 # test the pipeline
 PhagePipeline
