@@ -10,7 +10,7 @@
 ## $5 = cores
 ## $6 = minimum contig length
 
-module load miniconda/24.3.0
+ml miniconda/24.11.3
 conda activate /home/acv38/project/conda_envs/phageterm_py3
 /home/acv38/project/conda_envs/ptv-py3_release_1_light/PhageTerm.py \
   -f ${1} \
