@@ -1,6 +1,13 @@
 A pipeline for assembling and annotating phage genomes. This pipeline is hard-coded to make use of the YCRC's [software modules](https://docs.ycrc.yale.edu/clusters-at-yale/applications/modules/) and [dSQ job submission system](https://docs.ycrc.yale.edu/clusters-at-yale/job-scheduling/dsq/).
 
 ```{bash}
+# create an alias
+echo "alias PhagePipeline='sh ~/project/shared_scripts/PhagePipeline/run_PhagePipeline.sh'" >> ~/.bashrc
+
+# test the pipeline
+PhagePipeline
+```
+```{bash}
   Usage:
   sh run_PhagePipeline.sh -f <dir> -s <file> [-o,-d,-g,-m,-q,-k]
       -h    print this usage statement and exit
