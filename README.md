@@ -36,9 +36,7 @@ PhagePipeline
       -o    output path
               Default: pwd
       -d    read subsampling depth for shovill assembly
-              Default: 150
-      -g    estimated genome size for shovill assembly
-              As <integer[K,M,G]>, default: 100K
+              Default: 100
       -m    minimum contig length to keep
               Default: 1000
       -q    quoted parameter string for dSQ job array
