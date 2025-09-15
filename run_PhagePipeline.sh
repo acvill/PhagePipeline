@@ -53,9 +53,7 @@ usage() {
       -o    output path
               Default: pwd
       -d    read subsampling depth for shovill assembly
-              Default: 150
-      -g    estimated genome size for shovill assembly
-              As <integer[K,M,G]>, default: 100K
+              Default: 100
       -m    minimum contig length to keep
               Default: 1000
       -q    quoted parameter string for dSQ job array
@@ -141,15 +139,13 @@ elif [[ -z ${fastq} ]] && \
 elif [[ -n ${fastq} ]]; then
   
   if [ -z  ${index} ]; then
-    index=none
-  elif [ -a  ${index} ]; then
-    if [ "${index}" = "PAO1" ]; then
-      index=/home/acv38/project/databases/masked_genomes/PAO1/PAO1
-    elif [ "${index}" = "PA14" ]; then
-      index=/home/acv38/project/databases/masked_genomes/PA14/PA14
-    else
-      index=$(realpath ${index})
-    fi
+    id_path=none
+  elif [ "${index}" == "PAO1" ]; then
+    id_path=/home/acv38/project/databases/masked_genomes/PAO1/PAO1
+  elif [ "${index}" == "PA14" ]; then
+    id_path=/home/acv38/project/databases/masked_genomes/PA14/PA14
+  else
+    id_path=$(realpath ${index})
   fi
   
   fq_path=$(realpath ${fastq})
@@ -158,7 +154,7 @@ elif [[ -n ${fastq} ]]; then
   printf "\nStarting assembly pipeline\n"
   printf "\n######################\n"
   printf "## input fastq path  -> ${fq_path}\n"
-  printf "## input index       -> ${index}\n"
+  printf "## input index       -> ${id_path}\n"
   printf "## output path       -> ${outdir}\n"
   printf "## subsampling depth -> ${depth}\n"
   printf "######################\n\n"
@@ -206,7 +202,7 @@ elif [[ -n ${fastq} ]]; then
     read1clean=${reads_out}/${sample}_R1.clean_1.fastq
     read2clean=${reads_out}/${sample}_R2.clean_2.fastq
     
-    if [ "${index}" = "none" ]; then
+    if [ "${id_path}" = "none" ]; then
       # skip hostile read cleaning
       if [[ ${read1} =~ \.gz$ ]] || [[ ${read2} =~ \.gz$ ]]; then
         run_hostile="cp ${read1} ${read1clean}.gz; cp ${read2} ${read2clean}.gz"
@@ -215,7 +211,7 @@ elif [[ -n ${fastq} ]]; then
       fi
     else
       # carry out hostile read cleaning
-      run_hostile="printf '${sample} -- cleaning reads with hostile\\\n' >> ${log}; sh ${hostile} ${read1} ${read2} ${index} ${cpus}"
+      run_hostile="printf '${sample} -- cleaning reads with hostile\\\n' >> ${log}; sh ${hostile} ${read1} ${read2} ${id_path} ${cpus}"
     fi
 
     run_shovill="printf '${sample} -- assembling reads with shovill\\\n' >> ${log}; sh ${shovill} ${read1clean}.gz ${read2clean}.gz ${mincontig} ${depth} ${memory} ${cpus}"
