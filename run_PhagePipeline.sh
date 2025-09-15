@@ -175,7 +175,7 @@ elif [[ -n ${fastq} ]]; then
   printf "$(wc -l < ${samplist}) samples written to ${samplist}\n" >> ${log}
   cd ${fq_path}
   while read sample; do
-    ls -d ${sample}* | \
+    ls -d ${sample}_R[1-2].fastq.gz | \
       wc -l | sed "s/^/${sample}\t/g" | \
       grep -Pv "\t2$" | awk -F$"\t" '{print $1}' \
       >> ${outdir}/log/error_samples.txt
@@ -268,7 +268,7 @@ elif [[ -n ${fasta} ]]; then
   printf "$(wc -l < ${samplist}) samples written to ${samplist}\n" >> ${log}
   cd ${fa_path}
   while read sample; do
-    ls -d ${sample}* | \
+    ls -d ${sample}.{fasta,fna,fa} | \
       wc -l | sed "s/^/${sample}\t/g" | \
       grep -Pv "\t1$" | awk -F$"\t" '{print $1}' \
       >> ${outdir}/log/error_samples.txt
