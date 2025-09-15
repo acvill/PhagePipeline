@@ -1,12 +1,17 @@
-A pipeline for assembling and annotating phage genomes. This pipeline is hard-coded to make use of the YCRC's [software modules](https://docs.ycrc.yale.edu/clusters-at-yale/applications/modules/) and [dSQ job submission system](https://docs.ycrc.yale.edu/clusters-at-yale/job-scheduling/dsq/).
+This is a pipeline for assembling and annotating phage genomes. This pipeline is hard-coded to make use of the YCRC's [software modules](https://docs.ycrc.yale.edu/clusters-at-yale/applications/modules/) and [dSQ job submission system](https://docs.ycrc.yale.edu/clusters-at-yale/job-scheduling/dsq/). 
 
+### Calling the script
+You can call the script directly by giving the full path: 
 ```{bash}
-# create an alias
-echo "alias PhagePipeline='sh ~/project/shared_scripts/PhagePipeline/run_PhagePipeline.sh'" >> ~/.bashrc
-
-# test the pipeline
+sh /gpfs/gibbs/project/turner/acv38/shared_scripts/PhagePipeline/run_PhagePipeline.sh
+```
+Or you can create an alias in your shell configuration file:
+```{bash}
+echo "alias PhagePipeline='sh /gpfs/gibbs/project/turner/acv38/shared_scripts/PhagePipeline/run_PhagePipeline.sh'" >> ~/.bashrc
+source ~/.bashrc
 PhagePipeline
 ```
+### Options
 ```{bash}
 
   For short read assembly and annotation:
