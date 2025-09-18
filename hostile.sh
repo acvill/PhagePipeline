@@ -9,7 +9,7 @@
 ## $3 = bowtie2 index
 ## $4 = threads
 
-module load miniconda/24.3.0
+ml miniconda/24.11.3
 conda activate /home/acv38/project/conda_envs/hostile
 hostile clean \
   --fastq1 ${1} \

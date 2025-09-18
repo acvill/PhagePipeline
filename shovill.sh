@@ -6,12 +6,12 @@
 # positional parameters
 ## $1 = read1
 ## $2 = read2
-## $3 = depth to subsample to
-## $4 = estimated genome size
+## $3 = min contig length
+## $4 = depth to subsample to
 ## $5 = Gb memory
 ## $6 = cpus
 
-module load miniconda/24.3.0
+ml miniconda/24.11.3
 conda activate /home/acv38/project/conda_envs/shovill
 shovill \
   --outdir . \
@@ -21,9 +21,8 @@ shovill \
   --minlen ${3} \
   --mincov 10 \
   --depth ${4} \
-  --gsize ${5} \
-  --ram ${6} \
-  --cpus ${7} \
+  --ram ${5} \
+  --cpus ${6} \
   --assembler spades \
   --trim
 conda deactivate
