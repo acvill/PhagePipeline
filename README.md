@@ -15,10 +15,10 @@ PhagePipeline
 ```{bash}
 
   For short read assembly and annotation:
-  sh run_PhagePipeline.sh -f <path> [OPTIONS]
+  PhagePipeline -f <path> [OPTIONS]
 
   For annotation of an existing genome / assembly:
-  sh run_PhagePipeline.sh -a <path> [OPTIONS]
+  PhagePipeline -a <path> [OPTIONS]
 
   All options:
 
