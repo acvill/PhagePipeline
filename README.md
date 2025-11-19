@@ -3,11 +3,21 @@ This is a pipeline for assembling and annotating phage genomes. This pipeline is
 ### Calling the script
 You can call the script directly by giving the full path: 
 ```{bash}
+# on McCleary
 sh /gpfs/gibbs/project/turner/acv38/shared_scripts/PhagePipeline/run_PhagePipeline.sh
+
+# on Bouchet
+sh /nfs/roberts/project/pi_pet3/shared/PhagePipeline/run_PhagePipeline.sh
 ```
 Or you can create an alias in your shell configuration file:
 ```{bash}
+# on McCleary
 echo "alias PhagePipeline='sh /gpfs/gibbs/project/turner/acv38/shared_scripts/PhagePipeline/run_PhagePipeline.sh'" >> ~/.bashrc
+source ~/.bashrc
+PhagePipeline
+
+# on Bouchet
+echo "alias PhagePipeline='sh /nfs/roberts/project/pi_pet3/shared/PhagePipeline/run_PhagePipeline.sh'" >> ~/.bashrc
 source ~/.bashrc
 PhagePipeline
 ```
